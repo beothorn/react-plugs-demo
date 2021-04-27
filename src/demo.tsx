@@ -1,7 +1,9 @@
 import { Hub } from 'react-plugs'
 import { Subject, BehaviorSubject } from 'rxjs'
-import { scan } from 'rxjs/operators'
+import { scan, map } from 'rxjs/operators'
 import * as React from 'react'
+
+const availableWidgets: BehaviorSubject<any> = new BehaviorSubject(["RandomNumberDisplay", "RandomNumberAccumulatorDisplay"])
 
 const randomNumberSource: Subject<any> = new Subject()
 
@@ -56,9 +58,22 @@ const randomNumberAccumulatorDisplay = {
 
 const hub = new Hub()
 
+const widgets: Map<string, any> = new Map()
+
+widgets.set("RandomNumberAccumulatorDisplay", randomNumberAccumulatorDisplay)
+widgets.set("RandomNumberDisplay", randomNumberDisplay)
+
+const addWidget = {
+    name: "AddWidget",
+    renderer: {
+        props: availableWidgets.pipe(map(opts => ({options: opts}))),
+        functionComponent: ({options}) => <>{options.map( (i, index) => <button onClick={() => hub.plug(widgets.get(i))} key={index}>{i}</button>)}</>
+    }
+}
+
+
 hub.plug(randomNumberGenerator)
-hub.plug(randomNumberDisplay)
-hub.plug(randomNumberAccumulatorDisplay)
+hub.plug(addWidget)
 
 randomNumberSource.next({randomNumber: Math.random()})
 
