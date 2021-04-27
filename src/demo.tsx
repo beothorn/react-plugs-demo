@@ -1,5 +1,5 @@
 import { Hub } from 'react-plugs'
-import { Subject } from 'rxjs'
+import { Subject, BehaviorSubject } from 'rxjs'
 import { scan } from 'rxjs/operators'
 import * as React from 'react'
 
@@ -32,7 +32,7 @@ const randomNumberDisplay = {
     }
 }
 
-const randomNumberAccumulatorDisplayProps: Subject<any> = new Subject()
+const randomNumberAccumulatorDisplayProps: BehaviorSubject<any> = new BehaviorSubject([])
 const randomNumberAccumulatorDisplay = {
     name: "RandomNumberAccumulatorDisplay",
     inputs: [
@@ -44,7 +44,12 @@ const randomNumberAccumulatorDisplay = {
         }
     ],
     renderer: {
-        props: randomNumberAccumulatorDisplayProps.pipe(scan((acc, newNumber) => ({randomNumbers: acc.randomNumbers.concat(newNumber)}), {randomNumbers: []})),
+        props: randomNumberAccumulatorDisplayProps.pipe(
+            scan((acc, newNumber) => {
+                acc.randomNumbers.push(newNumber)
+                return {randomNumbers: acc.randomNumbers.slice(-3)}
+            }, {randomNumbers: []})
+        ),
         functionComponent: ({randomNumbers}) => <>{randomNumbers.map( (i, index) => <p key={index}>{index}: {i}</p>)}</>
     }
 }
