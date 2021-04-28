@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/beothorn/react-plugs-demo#readme",
   "dependencies": {
-    "react-plugs": "0.0.9"
+    "react-plugs": "0.0.11"
   },
   "devDependencies": {
     "ts-loader": "^9.0.2",
