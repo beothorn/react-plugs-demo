@@ -12,9 +12,15 @@ const Widget:React.FunctionComponent<{
     return a[0].localeCompare(b[0])
   }))
   sorted.forEach( (Component, key) => 
-    rendered.push(<Component key={key} {...(props.get(key))} />)
+    rendered.push(
+      <div className="box">
+        <Component key={key} {...(props.get(key))} />
+      </div>
+    )
   )
-  return <React.StrictMode> {rendered} </React.StrictMode>
+  return <React.StrictMode> 
+    {rendered} 
+  </React.StrictMode>
 }
 
 const WidgetRenderer = (components, props) => 
