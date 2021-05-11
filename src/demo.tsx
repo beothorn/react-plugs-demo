@@ -1,11 +1,13 @@
-import { Hub, Plug } from 'react-plugs'
+import { Hub, HubComponent } from 'react-plugs'
+import * as ReactDOM from 'react-dom'
 import widgetBox from './WidgetBox'
 import randomNumberGenerator from './RandomNumberGenerator'
 import RandomNumberDisplay from './RandomNumberDisplay'
 import RandomNumberAccumulatorDisplay from './RandomNumberAccumulatorDisplay'
 import AddWidget from './AddWidget'
+import WidgetRenderer from './WidgetRenderer'
 
-const hub = new Hub()
+const hub = new Hub(WidgetRenderer)
 const widgetBoxWrapper = widgetBox(hub)
 
 const widgets: Map<string, any> = new Map()
