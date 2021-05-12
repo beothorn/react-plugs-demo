@@ -1,5 +1,4 @@
-import { Hub, HubComponent } from 'react-plugs'
-import * as ReactDOM from 'react-dom'
+import { Hub } from 'react-plugs'
 import widgetBox from './WidgetBox'
 import randomNumberGenerator from './RandomNumberGenerator'
 import RandomNumberDisplay from './RandomNumberDisplay'

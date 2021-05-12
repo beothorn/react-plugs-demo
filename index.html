@@ -10,14 +10,35 @@
         *{
             margin: 0;
             padding: 0;
-            color: #343434;
+            color: #000;
+        }
+
+        html {
+            min-height: 100%;
+        }
+
+        body {
+            background: linear-gradient(to right top, #33256c, #8a71ff)
+        }
+        #main {
+            font-family: "Poppins", sans-serif;
+            display: flex;
+            flex-direction: row;
+        }
+        @media (max-width: 26rem) {
+            #main {
+                flex-direction: column;
+            }
         }
         .widget{
-            border: 1px #000 solid;
-        }
-        .box{
-            border: 1px #000 solid;
-            padding: 1em;
+            min-height: 10vh;
+            width: 13rem;
+            background: linear-gradient( to right bottom, #ffffff82, #dad1d170 );
+            border-radius: 0.5rem;
+            z-index: 2;
+            backdrop-filter: blur(2rem);
+            padding: 0.3rem;
+            margin: 0.1rem;
         }
     </style>
 </head>

@@ -1,7 +1,6 @@
 import { Plug } from 'react-plugs'
 import { Subject } from 'rxjs'
 import * as React from 'react'
-import widgetBox from './WidgetBox'
 
 class RandomNumberDisplay implements Plug {
 
