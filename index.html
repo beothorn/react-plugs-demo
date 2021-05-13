@@ -10,7 +10,6 @@
         *{
             margin: 0;
             padding: 0;
-            color: #000;
         }
 
         html {
@@ -18,12 +17,19 @@
         }
 
         body {
-            background: linear-gradient(to right top, #33256c, #8a71ff)
+            background-image: url('./back.png'), linear-gradient(to right top, #33256c, #8a71ff);
+            
         }
         #main {
             font-family: "Poppins", sans-serif;
             display: flex;
             flex-direction: row;
+            background: linear-gradient( to right bottom, #ffffff14, #dad1d129 );
+            backdrop-filter: blur(0.08rem);
+            border-radius: 0.5rem;
+            width: fit-content;
+            padding: 1rem;
+            margin: 1rem;
         }
         @media (max-width: 26rem) {
             #main {
@@ -33,12 +39,18 @@
         .widget{
             min-height: 10vh;
             width: 13rem;
-            background: linear-gradient( to right bottom, #ffffff82, #dad1d170 );
+            background: linear-gradient( to right bottom, #ffffffd6, #dad1d18c );
             border-radius: 0.5rem;
             z-index: 2;
             backdrop-filter: blur(2rem);
             padding: 0.3rem;
             margin: 0.1rem;
+            text-shadow: 1px 1px 0px rgb(218 218 218);
+            color: #333;
+        }
+        .widget-header{
+            display: flex;
+            flex-direction: row-reverse;
         }
     </style>
 </head>
